@@ -14,21 +14,21 @@ export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null)
   const [checking, setChecking] = useState(true)
 
-  useEffect(() => {
-    const foo = async () => {
-      try {
-        const res = await axios.get("http://localhost:5000/api/v1/users/me", { withCredentials: true })
-        setUser(res.data.data.user)
-        setIsLoggedIn(true)
-      } catch (error) {
-        console.log(error)
-      } finally {
-        setChecking(false)
-      }
+  const foo = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/v1/users/me", { withCredentials: true })
+      setUser(res.data.data.user)
+      setIsLoggedIn(true)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setChecking(false)
     }
+  }
 
+  useEffect(() => {
     foo()
   }, [])
 
-  return [isLoggedIn, user, checking]
+  return [isLoggedIn, setIsLoggedIn, user, checking]
 }

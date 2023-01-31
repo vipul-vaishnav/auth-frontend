@@ -1,15 +1,16 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import Loader from './Loader';
 
 const PrivateRoute = () => {
-  const [isLoggedIn, user, checking] = useAuth()
+  const [isLoggedIn, setIsLoggedIn, user, checking] = useAuth()
 
   if (checking) {
-    return <>Loading...</>
+    return <Loader />
   }
 
   return (
-    isLoggedIn ? <Outlet context={{ user }} /> : <Navigate to="/login" />
+    isLoggedIn ? <Outlet context={{ user, setIsLoggedIn }} /> : <Navigate to="/login" />
   )
 }
 
