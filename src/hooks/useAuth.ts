@@ -7,7 +7,7 @@ export type User = {
   email: string
 }
 
-const BASE_URL = import.meta.env.BASE_URL
+const BASE_URL = import.meta.env.VITE_BASE_URL
 axios.defaults.withCredentials = true
 
 export const useAuth = () => {

@@ -2,7 +2,7 @@ import React, { FormEvent, useState } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.BASE_URL
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 const Register = () => {
   const [formData, setFormData] = useState({ name: "", email: "", password: "", })

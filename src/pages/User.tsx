@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom'
 import { User as UserType } from '../hooks/useAuth'
 import axios from 'axios'
 
-const BASE_URL = import.meta.env.BASE_URL
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 type OutletProps = {
   user: UserType | null
