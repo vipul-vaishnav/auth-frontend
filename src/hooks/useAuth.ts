@@ -7,6 +7,7 @@ export type User = {
   email: string
 }
 
+const BASE_URL = import.meta.env.BASE_URL
 axios.defaults.withCredentials = true
 
 export const useAuth = () => {
@@ -16,7 +17,7 @@ export const useAuth = () => {
 
   const foo = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/users/me", { withCredentials: true })
+      const res = await axios.get(BASE_URL + "/api/v1/users/me", { withCredentials: true })
       setUser(res.data.data.user)
       setIsLoggedIn(true)
     } catch (error) {

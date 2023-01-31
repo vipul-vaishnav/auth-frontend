@@ -2,6 +2,8 @@ import React, { FormEvent, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.BASE_URL
+
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "", })
   const [loading, setLoading] = useState(false)
@@ -14,7 +16,7 @@ const Login = () => {
     setLoading(true)
 
     try {
-      const res = await axios.post("http://localhost:5000/api/v1/users/login", formData)
+      const res = await axios.post(BASE_URL + "/api/v1/users/login", formData)
       setAlert({ type: "success", message: res.data.message, show: true })
       navigate("/dashboard")
     } catch (error: any) {

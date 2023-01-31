@@ -2,6 +2,8 @@ import React, { FormEvent, useState } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.BASE_URL
+
 const Register = () => {
   const [formData, setFormData] = useState({ name: "", email: "", password: "", })
   const [loading, setLoading] = useState(false)
@@ -13,7 +15,7 @@ const Register = () => {
     setLoading(true)
 
     try {
-      const res = await axios.post("http://localhost:5000/api/v1/users/new", formData)
+      const res = await axios.post(BASE_URL + "/api/v1/users/new", formData)
       setAlert({ type: "success", message: res.data.message, show: true })
     } catch (error: any) {
       setAlert({ type: "error", message: error.response.data.message, show: true })
